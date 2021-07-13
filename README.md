@@ -1,0 +1,2 @@
+# kshCRM
+CRM using Django
