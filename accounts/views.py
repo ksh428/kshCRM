@@ -42,7 +42,7 @@ def loginPage(request):
 		username=request.POST.get('username')
 		password=request.POST.get('password')
 		user=authenticate(request,username=username,password=password)
-		if user is not None:
+		if user is not None: #if the user is actually present
 			login(request,user)
 			return redirect('home')
 		else :
@@ -109,7 +109,7 @@ def customer(request,pk):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles='admin')
-def createOrder(request,pk):#pk of customer
+def createOrder(request,pk):#pk of customer //DIFFICULTY ADD
 	customer=Customer.objects.get(id=pk)
 	#parent model,childmodel
 	OrderFormSet=inlineformset_factory(Customer,Order,fields=('product','status'),extra=4) 
@@ -117,7 +117,7 @@ def createOrder(request,pk):#pk of customer
 	
 	#form=OrderForm(initial={'customer':customer}) //prefill the customer col
 	if request.method=='POST':
-		#form=OrderForm(request.POST)
+		#form=OrderForm(request.POST) //send the data to the form
 		formset=OrderFormSet(request.POST,instance=customer)
 		if formset.is_valid():
 			formset.save() #automatically saves the order in db

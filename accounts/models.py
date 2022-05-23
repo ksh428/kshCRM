@@ -1,5 +1,5 @@
 from django.db import models
-#pass:12345
+#pass:12345 ,name:kshounish
 # Create your models here.
 from django.contrib.auth.models import User
 
@@ -40,8 +40,8 @@ class Order(models.Model):
 		('Out for Delivery','Out for Delivery'),
 		('Delivered','Delivered'),
 		)
-	customer=models.ForeignKey(Customer,null=True,on_delete=models.SET_NULL)
-	product=models.ForeignKey(Product,null=True,on_delete=models.SET_NULL)
+	customer=models.ForeignKey(Customer,null=True,on_delete=models.SET_NULL)#many to one :many this order can have many customers
+	product=models.ForeignKey(Product,null=True,on_delete=models.SET_NULL) 
 	date_created=models.DateTimeField(auto_now_add=True,null=True)
 	status=models.CharField(max_length=200,null=True,choices=STATUS)
 	def __str__(self):

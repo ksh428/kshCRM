@@ -9,7 +9,8 @@
 		<div class="card card-body">
 			<h5>Customer:</h5>
 			<hr>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
+			<b>{{ customer.name }}</b>
+			<br>
 			<a class="btn btn-outline-warning  btn-sm btn-block" href="{% url 'create_order' customer.id %}">Create new Order</a>
 
 		</div>
